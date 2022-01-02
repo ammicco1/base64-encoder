@@ -51,7 +51,7 @@ char *encode_base64(char string[]){
         return NULL;
     }
 
-    for(int i = 0; i < len; i++){
+    for(i = 0; i < len; i++){
         six_gr[i] = (int *) malloc(6 * sizeof(int));
         if(six_gr[i] == NULL){
             return NULL;
