@@ -1,50 +1,50 @@
 HERE'S AN IMPLEMENTATION OF A BASE64 ENCODER, TO UNDERSTAND HOW THE ENCODING ALGORITHM WORKS, HERE I DESCRIBE STEP BY STEP HOW TO MANUALLY ENCODE STRINGS FOR EXAMPLE IF YOU WANT TO CONVERT "ciao" INTO BASE64:
  - FIRST, YOU NEED TO SPLIT THE STRING LETTER BY LETTER:
-  - C
-  - I
-  - A
-  - O
+    - C
+    - I
+    - A
+    - O
 
  - NEXT YOU NEED TO CONVERT EACH LETTER TO BINARY, SO:
-  - 01100011
-  - 01101001
-  - 01100001
-  - 01101111
+    - 01100011
+    - 01101001
+    - 01100001
+    - 01101111
 
  - CONCATENATE ALL THE BINARY VALUES TOGETHER: 01100011011010010110000101101111
 
  - THEN, DIVIDE THE RESULTING STRING INTO GROUPS OF 6 CHARACTERS: 
-  - 011000
-  - 110110
-  - 100101
-  - 100001
-  - 011011
-  - 110000 <- HERE APPEND 4 ZEROS TO CREATE THE SIX-BIT STRING
+    - 011000
+    - 110110
+    - 100101
+    - 100001
+    - 011011
+    - 110000 <- HERE APPEND 4 ZEROS TO CREATE THE SIX-BIT STRING
 
  - NOW YOU HAVE TO CONVERT EACH GROUP FROM BINARY TO DECIMAL, SO:
-  - 24
-  - 54
-  - 37
-  - 33
-  - 27
-  - 48
+    - 24
+    - 54
+    - 37
+    - 33
+    - 27
+    - 48
 
  - THOSE INTEGER NUMBERS ARE CALLED BASE64 INDICES, EACH INDEX CORRESPONDS TO A LETTER. FOR THE COMPLETE LIST SEE "base64_enc.c". AFTER MATCHING INDEXES, CONVERT THEM TO LETTERS:
-  - Y
-  - 2
-  - L
-  - H
-  - B
-  - W
+    - Y
+    - 2
+    - L
+    - H
+    - B
+    - W
 
  - TO FINISH CONCATENATE ALL LETTERS TO GET THE BASE64 STRING "Y2LHBW"
 
 IF YOU USE LINUX USE THE MAKEFILE, IF YOU USE WINDOWS:
 
  - PASTE THEESE COMMANDS IN CMD TO COMPILE:
-  - gcc -Wall -ansi -pedantic -c binary_enc.c base64_enc.c base64_main.c
-  - gcc -Wall -ansi -pedantic -o base64_main.exe binary_enc.o base64_enc.o base64_main.o
+    - gcc -Wall -ansi -pedantic -c binary_enc.c base64_enc.c base64_main.c
+    - gcc -Wall -ansi -pedantic -o base64_main.exe binary_enc.o base64_enc.o base64_main.o
 
  - AND THEESE TO CLEAN:
-  - del *.o
-  - del *.exe
+    - del *.o
+    - del *.exe
