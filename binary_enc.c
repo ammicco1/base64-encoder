@@ -5,7 +5,7 @@
 /* the function returns an array that contains the binary number, on the index 0 there's the lenght of the number */
 
 int *binary_enc(int n){
-    int i, l = 0, tmp = n, j;
+    int i, j, l = 0, tmp = n;
     int *bin, *tmp_a;
 
     for(i = 0; tmp > 0; i++){    
@@ -54,12 +54,11 @@ int binary_dec(int bin[], int l){
 }
 
 int *to_ascii(int n[], int l){
+    int i, j = 1;
     int *ascii = malloc(sizeof(int) * 8);
     if(ascii == NULL){
         return NULL;
     }
-    
-    int i, j = 1;
 
     for(i = 0; i < 8; i++){
         ascii[i] = 0;

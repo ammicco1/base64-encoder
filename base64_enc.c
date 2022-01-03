@@ -13,7 +13,7 @@ char alfabeto[] = {
 char *encode_base64(char string[]){
     const int l = str_len(string); /* lenght of the string to encode */ 
     int *tmp, *dec, **six_gr; /* six_gr contains is a matrix that constains the group of 6 bits, dec contains the decimal numbers from those groups */
-    int i, j, z = 0, len;
+    int len, i, j, z = 0;
     int bin[l][8]; /* contains all the string in binary */ 
     int tot[l * 8]; /* contains all the string in binary in one line */ 
     char *str; /* final base64 string */
