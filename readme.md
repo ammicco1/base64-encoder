@@ -42,9 +42,10 @@ HERE'S AN IMPLEMENTATION OF A BASE64 ENCODER, TO UNDERSTAND HOW THE ENCODING ALG
 IF YOU USE LINUX USE THE MAKEFILE, IF YOU USE WINDOWS:
 
  - PASTE THEESE COMMANDS IN CMD TO COMPILE:
+```c
     - gcc -Wall -ansi -pedantic -c binary_enc.c base64_enc.c base64_main.c
     - gcc -Wall -ansi -pedantic -o base64_main.exe binary_enc.o base64_enc.o base64_main.o
-
+```
  - AND THEESE TO CLEAN:
     - del *.o
     - del *.exe
