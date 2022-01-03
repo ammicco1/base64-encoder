@@ -3,17 +3,26 @@
 #include <stdio.h>
 
 int main(){
-    char *base64;
-    char str[__MAX_LEN__];
+    char *base64, *decoded;
+    char str[__MAX_LEN__], str64[__MAX_64_LEN__];
+    int choise;
 
     while(1){
         printf("\n---------------------------------------------\n");
-        printf("\nINSERT THE STRING TO ENCODE: "); fgets(str, __MAX_LEN__, stdin);
+        printf("\nWHAT DO YOU WANT TO DO?\n");
+        printf("\t- 1:  ENCODE A STRING IN BASE64\n");
+        printf("\t- 2:  DECODE A BASE64 STRING\n");
         printf("\n---------------------------------------------\n");
 
-        base64 = encode_base64(str);
+        scanf(" %d", &choise); fflush(stdin);
 
-        printf("\nYOUR STRING: %s\nBASE64 STRING: %s\n", str, base64);
+        switch(choise){
+            case 1: printf("\nINSERT THE STRING TO ENCODE: "); fgets(str, __MAX_LEN__, stdin); 
+                    base64 = encode_base64(str); printf("\nYOUR STRING: %s\nBASE64 STRING: %s\n", str, base64); break;
+            case 2: printf("\nINSER THE STRING TO DECODE: "); fgets(str64, __MAX_64_LEN__, stdin); 
+                    decoded = decode_base64(str64); printf("\nBASE64 ENCODED STRING: %s\nDECODED STRING: %s\n", str64, decoded); break;
+            default: printf("WRONG CHOISE"); break;
+        }
     } 
 
     return 0;

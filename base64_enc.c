@@ -101,6 +101,81 @@ char *encode_base64(char string[]){
     return str;
 }
 
+char *decode_base64(char string[]){
+    int l = str_len(string);
+    int num[l], *tmp, tot[l * 6]; 
+    int bin[l][8], six[l][6], **binEight;
+    char *strchar;
+    int i, j = 0, z = 0, eight; 
+
+    for(i = 0; i < 63; i++){
+        if(string[j] == alfabeto[i]){
+            num[j] = i;
+            j++;
+            i = 0;
+        }
+    }
+
+    for(i = 0; i < l; i++){
+        tmp = to_ascii(binary_enc(num[i]), (binary_enc(num[i]))[0]);
+        for(j = 0; j < 8; j++){
+            bin[i][j] = tmp[j];
+        }
+    }
+
+    for(i = 0; i < l; i++){
+        for(j = 2; j < 8; j++){
+            six[i][z] = bin[i][j];
+            z++;
+        }
+        z = 0; 
+    }
+
+    j = -1;
+
+    for(i = 0; i < l * 6; i++){
+        if(i % 6 == 0){
+            z = 0;
+            j++;
+        }
+        tot[i] = six[j][z];
+        z++; 
+    }
+
+    eight = (sizeof(tot) / sizeof(int)) / 8;
+    binEight = (int **) malloc(eight * sizeof(int*));
+    if(binEight == NULL){
+        return NULL;
+    }
+
+    for(i = 0; i < eight; i++){
+        binEight[i] = (int *) malloc(8 * sizeof(int));
+        if(binEight[i] == NULL){
+            return NULL;
+        }
+    }
+
+    z = 0;
+
+    for(i = 0; i < eight; i++){
+        for(j = 0; j < 8; j++){
+            binEight[i][j] = tot[z];
+            z++;
+        }
+    }
+
+    strchar = (char *) malloc(eight * sizeof(int));
+    if(strchar == NULL){
+        return NULL;
+    }
+
+    for(i = 0; i < eight; i++){
+        strchar[i] = (char) binary_dec(binEight[i], 8);
+    }
+
+    return strchar;
+}
+
 int str_len(char string[]){
     int i = 0; 
 
