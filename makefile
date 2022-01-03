@@ -12,7 +12,7 @@ base64_enc.o: base64_enc.c
 	gcc $(FLAGS) -c base64_enc.c
 
 binary_enc.o: binary_enc.c
-	gcc $(FLAGS) -c binary_enc.c
+	gcc $(FLAGS) -c binary_enc.c -lm
 
 clean: 
 	rm -f *.o $(EXEC) $(OBJS)
