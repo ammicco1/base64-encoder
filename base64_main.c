@@ -17,7 +17,7 @@ int main(){
         scanf(" %d", &choise); fflush(stdin);
 
         switch(choise){
-            case 1: printf("\nINSERT THE STRING TO ENCODE: "); scanf("%s", str);
+            case 1: printf("\nINSERT THE STRING TO ENCODE: "); scanf("%[^\n]", str);
                     base64 = encode_base64(str); printf("\nYOUR STRING: %s\nBASE64 STRING: %s\n", str, base64); break;
             case 2: printf("\nINSER THE STRING TO DECODE: "); scanf("%s", str64);
                     decoded = decode_base64(str64); printf("\nBASE64 ENCODED STRING: %s\nDECODED STRING: %s\n", str64, decoded); break;
