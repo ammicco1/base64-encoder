@@ -1,5 +1,5 @@
-#define __MAX_LEN__ 100
-#define __MAX_64_LEN__ 200
+#define __MAX_LEN__ 500
+#define __MAX_64_LEN__ 600
 
 char *encode_base64(char string[]);
 
