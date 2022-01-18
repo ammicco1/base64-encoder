@@ -26,12 +26,18 @@ int main(){
         switch(choise){
             case 1: printf("\nINSERT THE STRING TO ENCODE: "); scanf(" %[^\n]", str);
                     base64 = encode_base64(str); printf("\nYOUR STRING: %s\nBASE64 STRING: %s\n", str, base64); break;
-            case 3: printf("\nENCODE INTO A FILE, INSERT THE PATH OF THE FILE: "); scanf(" %[^\n]", path); wfile = fopen(path, "w");
-                    printf("\nINSERT THE STRING TO ENCODE: "); scanf(" %[^\n]", str);
-                    base64 = encode_base64(str); fprintf(wfile, "%s", base64); fclose(wfile); break;
             case 2: printf("\nINSER THE STRING TO DECODE: "); scanf(" %s", str64);
                     decoded = decode_base64(str64); printf("\nBASE64 ENCODED STRING: %s\nDECODED STRING: %s\n", str64, decoded); break;
+            case 3: printf("\nENCODE INTO A FILE, INSERT THE PATH OF THE FILE: "); scanf(" %[^\n]", path); wfile = fopen(path, "w"); 
+                    if(wfile == NULL){
+                        printf("OPEN FILE ERROR"); break;
+                    }
+                    printf("\nINSERT THE STRING TO ENCODE: "); scanf(" %[^\n]", str);
+                    base64 = encode_base64(str); fprintf(wfile, "%s", base64); fclose(wfile); break;
             case 4: printf("\nINSERT THE PATH OF THE FILE: "); scanf(" %[^\n]", path); file = fopen(path, "r");
+                    if(file == NULL){
+                        printf("OPEN FILE ERROR"); break;
+                    }
                     while(!feof(file)){
                         fscanf(file, " %s", str64);
                         decoded = decode_base64(str64);
@@ -39,6 +45,9 @@ int main(){
                     } fclose(file); break;
             case 5: printf("\nINSERT THE PATH OF THE FILE TO ENCODE: "); scanf(" %[^\n]", path); file = fopen(path, "r");
                     printf("INSERT THE PATH OF THE FILE TO WRITE: "); scanf(" %[^\n]", path); wfile = fopen(path, "w");
+                    if(wfile == NULL || file == NULL){
+                        printf("OPEN FILE ERROR"); break;
+                    }
                     while(!feof(file)){
                         fscanf(file, " %[^\n]", str);
                         base64 = encode_base64(str);
@@ -47,6 +56,9 @@ int main(){
                     printf("DONE!"); break;
             case 6: printf("\nINSERT THE PATH OF THE FILE TO DECODE: "); scanf(" %[^\n]", path); file = fopen(path, "r");
                     printf("INSERT THE PATH OF THE FILE TO WRITE: "); scanf(" %[^\n]", path); wfile = fopen(path, "w");
+                    if(wfile == NULL || file == NULL){
+                        printf("OPEN FILE ERROR"); break;
+                    }
                     while(!feof(file)){
                         fscanf(file, " %s", str64);
                         decoded = decode_base64(str64);
