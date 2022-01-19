@@ -41,7 +41,7 @@ int main(){
                     if(file == NULL){
                         printf("OPEN FILE ERROR"); break;
                     }
-                    while(!feof(file)){
+                    while(fscanf(file, " %s", str64) == 1){
                         fscanf(file, " %s", str64);
                         decoded = decode_base64(str64);
                         printf("%s\n", decoded);
@@ -52,7 +52,7 @@ int main(){
                     if(wfile == NULL || file == NULL){
                         printf("OPEN FILE ERROR"); break;
                     }
-                    while(!feof(file)){
+                    while(fscanf(file, " %[^\n]", str) == 1){
                         fscanf(file, " %[^\n]", str);
                         base64 = encode_base64(str);
                         fprintf(wfile, "%s", base64);
@@ -64,7 +64,7 @@ int main(){
                     if(wfile == NULL || file == NULL){
                         printf("OPEN FILE ERROR"); break;
                     }
-                    while(!feof(file)){
+                    while(fscanf(file, " %s", str64) == 1){
                         fscanf(file, " %s", str64);
                         decoded = decode_base64(str64);
                         fprintf(wfile, "%s", decoded);
